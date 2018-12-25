@@ -31,31 +31,31 @@ all_del_btns.forEach(button => button.disabled = true)
 
 function setup() {
 	sounds = {
-		coin: loadSound("assets/coin.wav"),
-		horn: loadSound("assets/horn.wav"),
-		beep: loadSound("assets/musicnote4.wav"),
-		boop: loadSound("assets/musicnote6.wav"),
-		ping: loadSound("assets/musicnote5.wav"),
-		rockBeat: loadSound("assets/rockBeat.wav"),
-		funkBeat: loadSound("assets/funkBeat.wav"),
-		shuffleBeat: loadSound("assets/shuffleBeat.wav"),
-		airhorn: loadSound("assets/airhorn.mp3"),
-		synthC: loadSound("assets/musicnote1C.wav"),
-		synthD: loadSound("assets/musicnote1D.wav"),
-		synthE: loadSound("assets/musicnote1E.wav"),
-		synthF: loadSound("assets/musicnote1F.wav"),
-		synthG: loadSound("assets/musicnote1G.wav"),
-		synthA: loadSound("assets/musicnote1A.wav"),
-		synthB: loadSound("assets/musicnote1B.wav"),
-		synthC2: loadSound("assets/musicnote1C2.wav"),
-		catC: loadSound("assets/catC.wav"),
-		catD: loadSound("assets/catD.wav"),
-		catE: loadSound("assets/catE.wav"),
-		catF: loadSound("assets/catF.wav"),
-		catG: loadSound("assets/catG.wav"),
-		catA: loadSound("assets/catA.wav"),
-		catB: loadSound("assets/catB.wav"),
-		catC2: loadSound("assets/catC2.wav")
+		coin: loadSound("../assets/coin.wav"),
+		horn: loadSound("../assets/horn.wav"),
+		beep: loadSound("../assets/musicnote4.wav"),
+		boop: loadSound("../assets/musicnote6.wav"),
+		ping: loadSound("../assets/musicnote5.wav"),
+		rockBeat: loadSound("../assets/rockBeat.wav"),
+		funkBeat: loadSound("../assets/funkBeat.wav"),
+		shuffleBeat: loadSound("../assets/shuffleBeat.wav"),
+		airhorn: loadSound("../assets/airhorn.mp3"),
+		synthC: loadSound("../assets/musicnote1C.wav"),
+		synthD: loadSound("../assets/musicnote1D.wav"),
+		synthE: loadSound("../assets/musicnote1E.wav"),
+		synthF: loadSound("../assets/musicnote1F.wav"),
+		synthG: loadSound("../assets/musicnote1G.wav"),
+		synthA: loadSound("../assets/musicnote1A.wav"),
+		synthB: loadSound("../assets/musicnote1B.wav"),
+		synthC2: loadSound("../assets/musicnote1C2.wav"),
+		catC: loadSound("../assets/catC.wav"),
+		catD: loadSound("../assets/catD.wav"),
+		catE: loadSound("../assets/catE.wav"),
+		catF: loadSound("../assets/catF.wav"),
+		catG: loadSound("../assets/catG.wav"),
+		catA: loadSound("../assets/catA.wav"),
+		catB: loadSound("../assets/catB.wav"),
+		catC2: loadSound("../assets/catC2.wav")
 	}
 	createCanvas(0, 0);
 }
@@ -63,7 +63,7 @@ function setup() {
 function draw() {}
 
 function getSongs(){
-	fetch('http://localhost:3000/api/v1/songs').then(res => res.json())
+	fetch('https://remixer-api.herokuapp.com/api/v1/songs').then(res => res.json())
 	.then(songs => addToList(songs))
 }
 
@@ -126,10 +126,11 @@ function clickHandler(e) {
 			playTrack(soundTimesArray)
 			}
 	} else if (e.target.id === 'submit'){
-		//requires na me of song, artist name, song data
+		//requires name of song, artist name, song data
+		console.log("Hit The Submit Button: ", e)
 		let artistName = document.querySelector('#artistName').value;
 		let songTitle = document.querySelector('#songTitle').value;
-		fetch('http://localhost:3000/api/v1/songs', {
+		fetch('https://remixer-api.herokuapp.com/api/v1/songs', {
 			method: 'POST',
 			headers: {'Accept': 'application/json',
       				  'Content-Type': 'application/json'},
